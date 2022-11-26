@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 void addEmployee();
-int checkDuplicate(int id);
 void removeEmployee();
 void displayEmployeeDetails();
 void updateEmployeeDetails();
 void addToFile();
+int checkDuplicate(int id);
 struct employee * searchEmployee();
 
 struct employee

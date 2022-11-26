@@ -101,7 +101,7 @@ void removeEmployee()
       {
             printf("\nEnter Employee Id: ");
             scanf("%d", &empId);
-            printf("\n--------1-------\n");
+
             ptr = head;
 
             while (ptr != NULL)
@@ -117,7 +117,7 @@ void removeEmployee()
             if (flag == 0)
             {
                   printf("\n\tEMPLOYEE NOT FOUND\n");
-                  printf("\n-------2--------\n");
+
                   ptr = NULL;
                   return;
             }
@@ -130,12 +130,11 @@ void removeEmployee()
                         head = head->next;
                         free(ptr);
                         printf("\n\tEMPLOYEE DATA DELETED SUCCESSFULLY!!\n");
-                        printf("\n-------3--------\n");
                   }
                   else
                   {
                         ptr = head;
-                        printf("\n-------4--------\n");
+
                         while (ptr != NULL)
                         {
                               if (ptr->id == empId)
@@ -268,7 +267,6 @@ struct employee *searchEmployee()
 void addToFile()
 {
       FILE *fptr;
-
       fptr = fopen("EmployeeData.txt", "w");
       struct employee *ptr;
       ptr = head;

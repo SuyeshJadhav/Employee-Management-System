@@ -13,31 +13,31 @@ int main()
             {
             case 1:
             {
-                  printf("\n-------------------------------ADD EMPLOYEE--------------------------------------------\n");
+                  printf("\n-------------------------------ADD EMPLOYEE--------------------------------------------\n\n");
                   addEmployee();
                   break;
             }
             case 2:
             {
-                  printf("\n-------------------------------DELETE EMPOLYEE-----------------------------------------\n");
+                  printf("\n-------------------------------DELETE EMPOLYEE-----------------------------------------\n\n");
                   removeEmployee();
                   break;
             }
             case 3:
             {
-                  printf("\n------------------------------UPDATE EMPLOYEE DETAIL----------------------------------\n");
+                  printf("\n------------------------------UPDATE EMPLOYEE DETAIL----------------------------------\n\n");
                   updateEmployeeDetails();
                   break;
             }
             case 4:
             {
-                  printf("\n-------------------------------SEARCH EMPLOYEE------------------------------------------\n");
+                  printf("\n-------------------------------SEARCH EMPLOYEE------------------------------------------\n\n");
                   searchEmployee();
                   break;
             }
             case 5:
             {
-                  printf("\n-------------------------------DISPLAY EMPLOYEE DETAILS---------------------------------\n");
+                  printf("\n-------------------------------DISPLAY EMPLOYEE DETAILS---------------------------------\n\n");
                   displayEmployeeDetails();
                   break;
             }
