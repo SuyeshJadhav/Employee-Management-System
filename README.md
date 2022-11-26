@@ -2,7 +2,7 @@
 <br/>
 <pre>
 Team Details:<br/><br/>
-  -Dhurv Dedhia<br/>
+  -Dhruv Dedhia<br/>
   -Vedant Chavan<br/>
   -Suyesh Jadhav<br/>
 <pre/>
