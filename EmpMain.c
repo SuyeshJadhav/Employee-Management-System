@@ -112,3 +112,28 @@ void removeEmployee()
 }
 
 void updateEmpDetails(){}
+
+void searchEmployee()
+{
+      int empID;
+      struct employee *temp1;
+      if (head == NULL)
+      {
+            printf("Employee List Empty");
+      }
+      else
+      {
+            printf("Enter the Employee ID : ");
+            scanf("%d", &empID);
+            temp1 = head;
+            while (temp1->id != empID)
+            {
+                  temp1 = temp1->next;
+            }
+            printf("Employee ID: %d", empID);
+            printf("Employee Name: %s %s", temp1->fname,temp1->lname);
+            printf("Employee Age: %d", temp1->age);
+            printf("Employee Salary: %d", temp1->salary);
+            printf("Employee Tenure: %d", temp1-> experience);
+      }
+}
