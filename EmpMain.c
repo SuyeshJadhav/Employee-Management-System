@@ -5,7 +5,6 @@
 
 void addEmployee()
 {
-      printf("\n-------------------ADD EMPLOYEE--------------------------------------------------------\n");
       int n;
       printf("Enter the number of Employees: ");
       scanf("%d", &n);
@@ -55,6 +54,7 @@ void addEmployee()
                   }
             }
       }
+      addToFile();
 }
 
 int checkDuplicate(int id)
@@ -77,7 +77,6 @@ int checkDuplicate(int id)
 
 void displayEmployeeDetails()
 {
-      printf("\n-------------------------------DISPLAY EMPLOYEE DETAILS--------------------------------\n");
       struct employee *ptr;
       ptr = head;
       printf("\n\nEmployee Name\t\t||\tEmployee ID\t||\tEmployee age\t||\tEmployee Salary\t||\tEmployee Experience\n");
@@ -91,7 +90,7 @@ void displayEmployeeDetails()
 
 void removeEmployee()
 {
-      printf("\n-------------------------------DELETE EMPOLYEE--------------------------------\n");
+
       int empId, flag = 0;
       struct employee *preptr, *ptr;
       if (head == NULL)
@@ -102,7 +101,9 @@ void removeEmployee()
       {
             printf("\nEnter Employee Id: ");
             scanf("%d", &empId);
+            printf("\n--------1-------\n");
             ptr = head;
+
             while (ptr != NULL)
             {
                   if (ptr->id == empId)
@@ -110,14 +111,17 @@ void removeEmployee()
                         flag = 1;
                         break;
                   }
+
                   ptr = ptr->next;
             }
             if (flag == 0)
             {
                   printf("\n\tEMPLOYEE NOT FOUND\n");
+                  printf("\n-------2--------\n");
                   ptr = NULL;
                   return;
             }
+
             else
             {
                   if (empId == head->id)
@@ -126,11 +130,18 @@ void removeEmployee()
                         head = head->next;
                         free(ptr);
                         printf("\n\tEMPLOYEE DATA DELETED SUCCESSFULLY!!\n");
+                        printf("\n-------3--------\n");
                   }
                   else
                   {
-                        while (ptr->id != empId)
+                        ptr = head;
+                        printf("\n-------4--------\n");
+                        while (ptr != NULL)
                         {
+                              if (ptr->id == empId)
+                              {
+                                    break;
+                              }
                               preptr = ptr;
                               ptr = ptr->next;
                         }
@@ -139,27 +150,12 @@ void removeEmployee()
                         printf("\tEMPLOYEE DATA DELETED SUCCESSFULLY!!\n");
                   }
             }
-
-            // ptr = searchEmployee();
-            // if (ptr == NULL)
-            // {
-            //       // printf("\n\tEMPLOYEE NOT FOUND\n");
-            //       return;
-            // }
-            // else
-            // {
-            //       printf("Enter Employee Id: ");
-            //       scanf("%d", &empId);
-            //       ptr = head;
-
-            //
-            // }
       }
+      addToFile();
 }
 
 void updateEmployeeDetails()
 {
-      printf("\n------------------------------UPDATE EMPLOYEE DETAIL--------------------------------\n");
       if (head == NULL)
       {
             printf("\tEMPLOYEE LIST IS EMPTY\n");
@@ -223,11 +219,12 @@ void updateEmployeeDetails()
                   }
             }
       }
+      addToFile();
 }
 
 struct employee *searchEmployee()
 {
-      printf("\n-------------------------------------SEARCH EMPLOYEE------------------------------------\n");
+
       int empID, flag = 0;
       struct employee *temp1;
       if (head == NULL)
@@ -266,4 +263,21 @@ struct employee *searchEmployee()
 
             return temp1;
       }
+}
+
+void addToFile()
+{
+      FILE *fptr;
+
+      fptr = fopen("EmployeeData.txt", "w");
+      struct employee *ptr;
+      ptr = head;
+      fputs("\n\nEmployee Name\t\t||\tEmployee ID\t||\tEmployee age\t||\tEmployee Salary\t||\tEmployee Experience\n", fptr);
+      fputs("\n==================================================================================================================\n", fptr);
+      while (ptr != NULL)
+      {
+            fprintf(fptr, "%s %s\t\t||\t%d\t\t||\t%d\t\t||\t%d\t\t||\t%d\n\n", ptr->fname, ptr->lname, ptr->id, ptr->age, ptr->salary, ptr->experience);
+            ptr = ptr->next;
+      }
+      fclose(fptr);
 }

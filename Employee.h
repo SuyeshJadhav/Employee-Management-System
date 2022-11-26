@@ -6,6 +6,7 @@ int checkDuplicate(int id);
 void removeEmployee();
 void displayEmployeeDetails();
 void updateEmployeeDetails();
+void addToFile();
 struct employee * searchEmployee();
 
 struct employee
