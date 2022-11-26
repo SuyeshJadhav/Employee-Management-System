@@ -5,8 +5,9 @@
 
 void addEmployee()
 {
+      printf("\n-------------------ADD EMPLOYEE--------------------------------------------------------\n");
       int n;
-      printf("Enter the number of entries: ");
+      printf("Enter the number of Employees: ");
       scanf("%d", &n);
 
       for (int i = 0; i < n; i++)
@@ -22,7 +23,7 @@ void addEmployee()
             printf("Enter the age: ");
             scanf("%d", &newEmp->age);
 
-            printf("Enter Experience: ");
+            printf("Enter Experience years: ");
             scanf("%d", &newEmp->experience);
 
             printf("Enter salary: ");
@@ -33,7 +34,7 @@ void addEmployee()
 
             if (checkDuplicate(newEmp->id))
             {
-                  printf("\nEmployee with same id already exixts..");
+                  printf("\n\tEMPLOYEE WITH SAME ID ALREADY EXISTS");
             }
             else
             {
@@ -76,9 +77,10 @@ int checkDuplicate(int id)
 
 void displayEmployeeDetails()
 {
+      printf("\n-------------------------------DISPLAY EMPLOYEE DETAILS--------------------------------\n");
       struct employee *ptr;
       ptr = head;
-      printf("\n\nEmployee Name\t\t||\tEmployee ID\t||\tEmployee age\t||\tEmployee Salary\t||\tEmployee Tenure\n");
+      printf("\n\nEmployee Name\t\t||\tEmployee ID\t||\tEmployee age\t||\tEmployee Salary\t||\tEmployee Experience\n");
       printf("\n==================================================================================================================\n");
       while (ptr != NULL)
       {
@@ -89,34 +91,79 @@ void displayEmployeeDetails()
 
 void removeEmployee()
 {
-      int empId;
-      struct employee *temp1, *temp2;
-
+      printf("\n-------------------------------DELETE EMPOLYEE--------------------------------\n");
+      int empId, flag = 0;
+      struct employee *preptr, *ptr;
       if (head == NULL)
       {
-            printf("Employee List Empty");
+            printf("\tEMPLOYEE LIST IS EMPTY\n");
       }
       else
       {
-            printf("Enter Employee Id: ");
+            printf("\nEnter Employee Id: ");
             scanf("%d", &empId);
-            temp1 = head;
-            while (temp1->id != empId)
+            ptr = head;
+            while (ptr != NULL)
             {
-                  temp2 = temp1;
-                  temp1 = temp1->next;
+                  if (ptr->id == empId)
+                  {
+                        flag = 1;
+                        break;
+                  }
+                  ptr = ptr->next;
             }
-            temp2->next = temp1->next;
-            free(temp1);
+            if (flag == 0)
+            {
+                  printf("\n\tEMPLOYEE NOT FOUND\n");
+                  ptr = NULL;
+                  return;
+            }
+            else
+            {
+                  if (empId == head->id)
+                  {
+                        ptr = head;
+                        head = head->next;
+                        free(ptr);
+                        printf("\n\tEMPLOYEE DATA DELETED SUCCESSFULLY!!\n");
+                  }
+                  else
+                  {
+                        while (ptr->id != empId)
+                        {
+                              preptr = ptr;
+                              ptr = ptr->next;
+                        }
+                        preptr->next = ptr->next;
+                        free(ptr);
+                        printf("\tEMPLOYEE DATA DELETED SUCCESSFULLY!!\n");
+                  }
+            }
+
+            // ptr = searchEmployee();
+            // if (ptr == NULL)
+            // {
+            //       // printf("\n\tEMPLOYEE NOT FOUND\n");
+            //       return;
+            // }
+            // else
+            // {
+            //       printf("Enter Employee Id: ");
+            //       scanf("%d", &empId);
+            //       ptr = head;
+
+            //
+            // }
       }
 }
 
 void updateEmployeeDetails()
 {
-
+      printf("\n------------------------------UPDATE EMPLOYEE DETAIL--------------------------------\n");
       if (head == NULL)
-            printf("Employee List Empty");
-
+      {
+            printf("\tEMPLOYEE LIST IS EMPTY\n");
+      }
       else
       {
 
@@ -163,7 +210,7 @@ void updateEmployeeDetails()
                         }
                         break;
                   case 5:
-                        printf("Enter Experience: ");
+                        printf("Enter Experience years: ");
                         scanf("%d", &elem);
                         temp->experience = elem;
                         break;
@@ -171,7 +218,7 @@ void updateEmployeeDetails()
                         break;
 
                   default:
-                        printf("Invalid Input");
+                        printf("\tINVALID INPUT\n");
                         break;
                   }
             }
@@ -180,11 +227,12 @@ void updateEmployeeDetails()
 
 struct employee *searchEmployee()
 {
+      printf("\n-------------------------------------SEARCH EMPLOYEE------------------------------------\n");
       int empID, flag = 0;
       struct employee *temp1;
       if (head == NULL)
       {
-            printf("Employee List Empty");
+            printf("\n\tEMPLOYEE LIST IS EMPTY\n");
             return head;
       }
       else
@@ -192,18 +240,18 @@ struct employee *searchEmployee()
             printf("Enter the Employee ID : ");
             scanf("%d", &empID);
             temp1 = head;
-            while (temp1->id != empID)
+            while (temp1 != NULL)
             {
-                  temp1 = temp1->next;
                   if (temp1->id == empID)
                   {
                         flag = 1;
                         break;
                   }
+                  temp1 = temp1->next;
             }
-            if (!flag)
+            if (flag == 0)
             {
-                  printf("\nEmployee Not found");
+                  printf("\n\tEMPLOYEE NOT FOUND\n");
                   temp1 = NULL;
                   return temp1;
             }
