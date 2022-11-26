@@ -20,7 +20,7 @@ void addEmployee()
 
             printf("Enter the age: ");
             scanf("%d", &newEmp->age);
-            
+
             printf("Enter Experience: ");
             scanf("%d", &newEmp->experience);
 
@@ -44,7 +44,7 @@ void addEmployee()
                   else
                   {
                         struct employee *node = head;
-                        while (node->next!= NULL)
+                        while (node->next != NULL)
                         {
                               node = node->next;
                         }
@@ -52,7 +52,6 @@ void addEmployee()
                         newEmp->next = NULL;
                   }
             }
-            
       }
 }
 
@@ -111,4 +110,11 @@ void removeEmployee()
       }
 }
 
-void updateEmpDetails(){}
+void updateEmployeeDetails()
+{
+      int empId;
+      printf("Enter Employee Id: ");
+      scanf("%d", &empId);
+      searchEmployee();
+
+}
