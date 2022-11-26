@@ -5,7 +5,8 @@ void addEmployee();
 int checkDuplicate(int id);
 void removeEmployee();
 void displayEmployeeDetails();
-void updateEmpDetails();
+void updateEmployeeDetails();
+struct employee * searchEmployee();
 
 struct employee
 {
