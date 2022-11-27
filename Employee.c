@@ -6,7 +6,7 @@ int main()
       while (ch != 6)
       {
             printf("\n------------------------------------------------------------------------------------\n");
-            printf("\n1 -> Add Employee\n2 -> Delete Employee\n3 -> Update Employee Details\n4 -> Search Employee\n5 -> Display Employee Details\n7->Exit");
+            printf("\n1 -> Add Employee\n2 -> Delete Employee\n3 -> Update Employee Details\n4 -> Search Employee\n5 -> Display Employee Details\n6->Exit");
             printf("\nEnter Input: ");
             scanf("%d", &ch);
             switch (ch)
@@ -39,6 +39,10 @@ int main()
             {
                   printf("\n-------------------------------DISPLAY EMPLOYEE DETAILS---------------------------------\n\n");
                   displayEmployeeDetails();
+                  break;
+            }
+            case 6:
+            {
                   break;
             }
             default:
